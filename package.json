@@ -1,0 +1,26 @@
+{
+  "name": "management",
+  "private": true,
+  "version": "0.1.0",
+  "main": "index.js",
+  "author": "Yamasou <s.yama@ashita-team.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "./node_modules/.bin/webpack --config webpack/webpack.config.js",
+    "dev": "./node_modules/.bin/webpack-dev-server --config webpack/webpack.config.js"
+  },
+  "dependencies": {
+    "@rails/activestorage": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "@types/react": "^16.9.43",
+    "@types/react-dom": "^16.9.8",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "ts-loader": "^8.0.1",
+    "typescript": "^3.9.7",
+    "webpack": "^4.43.0",
+    "webpack-assets-manifest": "^3.1.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
