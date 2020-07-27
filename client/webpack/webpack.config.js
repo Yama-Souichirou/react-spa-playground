@@ -1,6 +1,8 @@
 const path = require("path");
 const paths = require("./paths.js")
 const WebpackAssetsManifest = require("webpack-assets-manifest");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 const { NODE_ENV } = process.env;
 const isProd = NODE_ENV === "production";
@@ -12,9 +14,9 @@ module.exports = {
     index: path.resolve(paths.srcDir, "index.tsx")
   },
   output: {
-    path: path.resolve(paths.rootDir, "public", "packs"),
-    publicPath: isProd ? "/packs/" : "//localhost:8081/packs/",
-    filename: "[name]-[hash].js"
+    path: path.resolve(paths.outputDir, "assets"),
+    publicPath: isProd ? "/assets/" : "//localhost:8081/assets/",
+    filename: "js/[name]-[hash].js"
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"]
@@ -34,10 +36,17 @@ module.exports = {
       }
     ]
   },
-  plugins: [new WebpackAssetsManifest({ publicPath: true, writeToDisk: true })],
+  plugins: [
+    new WebpackAssetsManifest({ publicPath: true, writeToDisk: true }),
+    new HtmlWebpackPlugin({
+      title: "R-Management",
+      filename: path.resolve(paths.outputDir, "index.html"),
+    })
+  ],
   devServer: {
-    contentBase: path.resolve(paths.rootDir, "public"),
-    publicPath: "/packs/",
+    contentBase: paths.outputDir,
+    writeToDisk: true,
+    publicPath: "/assets/",
     host: "localhost",
     port: 8081,
     headers: {

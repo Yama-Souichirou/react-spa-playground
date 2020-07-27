@@ -11,17 +11,17 @@
 * TypeScript 3.9
 
 ### 開発手順
-
-* 最初のみ実行
-  * node package をインストールしてフロント環境を構築
-    * `$ yarn install`
-      * 以降は package を追加するたびに実行
-* 毎回実行
-  * rails server 起動
-    * `$rails s`
+* api ( rail ディレクトリ )
+  * `/server` ディレクトリに移動
+  * bundle install
+  * bundle exec bin/rails db:migrate
+  * api server ( rails server ) 起動
+    * `$ rails s`
+* client 
+  * `/client` ディレクトリに移動
   * web server 起動
     * `$ yarn dev`
   * フロントのアセットファイルをコンパイル
     * `$ yarn build`
-    * web server で使用している webpack-dev-server がアセットファイルを監視してコンパイルしているので、基本的には使用しない
+      * web server で使用している webpack-dev-server がアセットファイルを監視してコンパイルしているので、基本的には使用しない
 
