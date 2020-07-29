@@ -3,8 +3,11 @@ import ReactDom from "react-dom"
 import { App } from "./App.tsx"
 
 document.addEventListener("DOMContentLoaded", () => {
+  const rootEl = document.createElement("div", { id: "root" })
+  document.body.appendChild(rootEl)
+
   ReactDom.render(
     <App />,
-    document.getElementById("app")
+    rootEl
   )
 })
